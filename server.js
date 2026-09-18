@@ -1,8 +1,9 @@
 const express=require("express");
 const app=express();
 const cors=require("cors")
-const port=5000;
 const aiRoute =require("./routes/aiRoute")
+require("dotenv").config()
+const port=process.env.API_URL||5000;
 app.use(express());
 app.use(cors())
 app.use('/api/ai',aiRoute);
