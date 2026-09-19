@@ -11,9 +11,9 @@ const analyze_resume = async (req, res) => {
     if (!req.file) {
       return res.status(400).json({ message: "Please upload a PDF file" });
     }
-
+    
+    const {jobDescription} = req.body.jobDescription || "General Web Development Role";
     const pdf64 = req.file.buffer.toString("base64");
-    const jobDescription = req.body.jobDescription || "General Web Development Role";
 
     // 2. Call Gemini API
     const response = await ai.models.generateContent({
